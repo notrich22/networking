@@ -1,0 +1,42 @@
+# Nmap 7.95 scan initiated Sun Nov  3 19:35:16 2024 as: nmap -A --script vuln -oN scan_results.txt 192.168.0.171
+Nmap scan report for 192.168.0.171
+Host is up (0.11s latency).
+Not shown: 996 filtered tcp ports (no-response)
+PORT     STATE SERVICE             VERSION
+135/tcp  open  msrpc               Microsoft Windows RPC
+139/tcp  open  netbios-ssn         Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds?
+6881/tcp open  bittorrent-tracker?
+MAC Address: 00:15:86:08:D0:5A (Xiamen Overseas Chinese Electronic)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+OS fingerprint not ideal because: Missing a closed TCP port so results incomplete
+No OS matches for host
+Network Distance: 1 hop
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb-vuln-cve2009-3103: 
+|   VULNERABLE:
+|   SMBv2 exploit (CVE-2009-3103, Microsoft Security Advisory 975497)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2009-3103
+|           Array index error in the SMBv2 protocol implementation in srv2.sys in Microsoft Windows Vista Gold, SP1, and SP2,
+|           Windows Server 2008 Gold and SP2, and Windows 7 RC allows remote attackers to execute arbitrary code or cause a
+|           denial of service (system crash) via an & (ampersand) character in a Process ID High header field in a NEGOTIATE
+|           PROTOCOL REQUEST packet, which triggers an attempted dereference of an out-of-bounds memory location,
+|           aka "SMBv2 Negotiation Vulnerability."
+|           
+|     Disclosure date: 2009-09-08
+|     References:
+|       http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3103
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3103
+|_samba-vuln-cve-2012-1182: Could not negotiate a connection:SMB: Failed to receive bytes: TIMEOUT
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: Could not negotiate a connection:SMB: Failed to receive bytes: TIMEOUT
+
+TRACEROUTE
+HOP RTT       ADDRESS
+1   114.58 ms 192.168.0.171
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Nov  3 19:39:45 2024 -- 1 IP address (1 host up) scanned in 269.87 seconds
